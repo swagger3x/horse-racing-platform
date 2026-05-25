@@ -1,0 +1,21 @@
+# XML parsing
+lxml==5.2.1
+
+# Database
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.30
+
+# Supabase client
+supabase==2.4.6
+
+# Environment variables
+python-dotenv==1.0.1
+
+# Scheduling (pipeline)
+schedule==1.2.1
+
+# HTTP requests (for feed fetching)
+requests==2.31.0
+
+# Logging
+loguru==0.7.2
