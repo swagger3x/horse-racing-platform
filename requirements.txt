@@ -1,8 +1,8 @@
 # XML parsing
-lxml==5.2.1
+lxml==6.1.1
 
 # Database
-psycopg2-binary==2.9.9
+psycopg2-binary==2.9.12
 sqlalchemy==2.0.30
 
 # Supabase client
