@@ -25,4 +25,10 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
-*.swpvenv/
+*.swp
+
+# Generated runtime output — not source code
+logs/*
+reports/*
+!logs/.gitkeep
+!reports/.gitkeep

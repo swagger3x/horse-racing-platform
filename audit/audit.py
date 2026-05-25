@@ -4,7 +4,7 @@ audit.py
 Horse Racing XML Feed Audit Script
 
 Reads both FIELDS and FORM XML files, prints a detailed report
-to the terminal, and simultaneously saves it to docs/audit_report_TIMESTAMP.txt
+to the terminal, and simultaneously saves it to reports/audit_report_TIMESTAMP.txt
 
 Usage:
     python audit/audit.py --fields sample-data/FLE_FIELDS_XML_A.xml
@@ -256,7 +256,7 @@ def main():
 
     # Auto-generate report filename with timestamp
     timestamp   = datetime.now().strftime("%Y%m%d_%H%M%S")
-    report_path = os.path.join("docs", f"audit_report_{timestamp}.txt")
+    report_path = os.path.join("reports", f"audit_report_{timestamp}.txt")
 
     # Tee stdout so everything goes to terminal AND file
     tee = Tee(report_path)

@@ -36,7 +36,7 @@ LOG_LEVEL           = os.getenv("LOG_LEVEL", "INFO")
 
 logger.remove()
 logger.add(sys.stdout, level="DEBUG", format="{time:HH:mm:ss} | {level} | {message}")
-logger.add("docs/pipeline.log", level="DEBUG", rotation="10 MB",
+logger.add("logs/pipeline.log", level="DEBUG", rotation="10 MB",
            format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}")
 
 
