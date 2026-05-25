@@ -15,18 +15,11 @@
 -- ============================================================
 
 
--- ─────────────────────────────────────────────
 -- EXTENSIONS
--- ─────────────────────────────────────────────
-
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 
--- ─────────────────────────────────────────────
--- 1. TRACKS
--- Static venue information
--- ─────────────────────────────────────────────
-
+-- 1. TRACKS - Static venue information
 CREATE TABLE IF NOT EXISTS tracks (
     id                  UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     xml_track_id        INTEGER     NOT NULL UNIQUE,   -- track[@id]
@@ -45,11 +38,7 @@ CREATE TABLE IF NOT EXISTS tracks (
 COMMENT ON TABLE tracks IS 'Static venue/track information. One row per racecourse.';
 
 
--- ─────────────────────────────────────────────
--- 2. MEETINGS
--- One row per race day per venue
--- ─────────────────────────────────────────────
-
+-- 2. MEETINGS - One row per race day per venue
 CREATE TABLE IF NOT EXISTS meetings (
     id                  UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     track_id            UUID        NOT NULL REFERENCES tracks(id),
@@ -78,11 +67,7 @@ CREATE TABLE IF NOT EXISTS meetings (
 COMMENT ON TABLE meetings IS 'One row per race day per venue. Conditions reflect the day of racing.';
 
 
--- ─────────────────────────────────────────────
--- 3. RACES
--- Individual races within a meeting
--- ─────────────────────────────────────────────
-
+-- 3. RACES - Individual races within a meeting
 CREATE TABLE IF NOT EXISTS races (
     id                  UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     meeting_id          UUID        NOT NULL REFERENCES meetings(id),
@@ -128,11 +113,7 @@ CREATE TABLE IF NOT EXISTS races (
 COMMENT ON TABLE races IS 'Individual races within a meeting. One row per race.';
 
 
--- ─────────────────────────────────────────────
--- 4. HORSES
--- Permanent horse profiles (not race-specific)
--- ─────────────────────────────────────────────
-
+-- 4. HORSES - Permanent horse profiles (not race-specific)
 CREATE TABLE IF NOT EXISTS horses (
     id                  UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     xml_horse_id        BIGINT      NOT NULL UNIQUE,    -- horse[@id]
@@ -160,11 +141,7 @@ CREATE TABLE IF NOT EXISTS horses (
 COMMENT ON TABLE horses IS 'Permanent horse profiles. Independent of any specific race.';
 
 
--- ─────────────────────────────────────────────
--- 5. PEOPLE
--- Trainers and jockeys (shared table, role column)
--- ─────────────────────────────────────────────
-
+-- 5. PEOPLE - Trainers and jockeys (shared table, role column)
 CREATE TABLE IF NOT EXISTS people (
     id                      UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     xml_person_id           INTEGER     NOT NULL,
@@ -184,12 +161,7 @@ CREATE TABLE IF NOT EXISTS people (
 COMMENT ON TABLE people IS 'Trainers and jockeys. Role column distinguishes between them.';
 
 
--- ─────────────────────────────────────────────
--- 6. RUNNERS
--- A horse's entry in a specific race
--- Central linking table with race-day specific data
--- ─────────────────────────────────────────────
-
+-- 6. RUNNERS - A horse's entry in a specific race, Central linking table with race-day specific data
 CREATE TABLE IF NOT EXISTS runners (
     id                      UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     race_id                 UUID        NOT NULL REFERENCES races(id),
@@ -266,11 +238,7 @@ CREATE TABLE IF NOT EXISTS runners (
 COMMENT ON TABLE runners IS 'A horse entry in a specific race. Central linking table. Contains all race-day specific data.';
 
 
--- ─────────────────────────────────────────────
--- 7. PAST_RUNS
--- Historical race results per horse (from FORM feed)
--- ─────────────────────────────────────────────
-
+-- 7. PAST_RUNS - Historical race results per horse (from FORM feed)
 CREATE TABLE IF NOT EXISTS past_runs (
     id                      UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     runner_id               UUID        NOT NULL REFERENCES runners(id),
@@ -360,12 +328,7 @@ CREATE TABLE IF NOT EXISTS past_runs (
 COMMENT ON TABLE past_runs IS 'Historical race results per horse. One row per past run. Source: FORM feed only.';
 
 
--- ─────────────────────────────────────────────
--- 8. RUNNERS_STATISTICS
--- Win/place stats by condition type
--- 28 types per entity (horse, trainer, jockey)
--- ─────────────────────────────────────────────
-
+-- 8. RUNNERS_STATISTICS - Win/place stats by condition type, 28 types per entity (horse, trainer, jockey)
 CREATE TABLE IF NOT EXISTS runners_statistics (
     id          UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     runner_id   UUID        NOT NULL REFERENCES runners(id),
@@ -383,12 +346,7 @@ CREATE TABLE IF NOT EXISTS runners_statistics (
 COMMENT ON TABLE runners_statistics IS 'Win/place stats per runner by condition type. 28 types x 3 entities = up to 84 rows per runner.';
 
 
--- ─────────────────────────────────────────────
--- 9. RUNNERS_RATINGS
--- Performance ratings by condition type
--- 25 types per runner
--- ─────────────────────────────────────────────
-
+-- 9. RUNNERS_RATINGS - Performance ratings by condition type,- 25 types per runner
 CREATE TABLE IF NOT EXISTS runners_ratings (
     id          UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     runner_id   UUID        NOT NULL REFERENCES runners(id),
@@ -403,11 +361,7 @@ CREATE TABLE IF NOT EXISTS runners_ratings (
 COMMENT ON TABLE runners_ratings IS 'Performance ratings per runner by condition type. Up to 25 rows per runner.';
 
 
--- ─────────────────────────────────────────────
--- INDEXES
--- Speed up common queries
--- ─────────────────────────────────────────────
-
+-- INDEXES - Speed up common queries
 -- Meetings
 CREATE INDEX IF NOT EXISTS idx_meetings_date         ON meetings (meeting_date);
 CREATE INDEX IF NOT EXISTS idx_meetings_track        ON meetings (track_id);
@@ -442,10 +396,7 @@ CREATE INDEX IF NOT EXISTS idx_stats_runner_entity   ON runners_statistics (runn
 CREATE INDEX IF NOT EXISTS idx_ratings_runner        ON runners_ratings (runner_id);
 
 
--- ─────────────────────────────────────────────
 -- AUTO-UPDATE updated_at TRIGGER
--- ─────────────────────────────────────────────
-
 CREATE OR REPLACE FUNCTION update_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN

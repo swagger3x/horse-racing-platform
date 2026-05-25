@@ -1,6 +1,4 @@
 """
-seed.py
--------
 Applies schema.sql to the Supabase PostgreSQL database.
 
 Usage:
