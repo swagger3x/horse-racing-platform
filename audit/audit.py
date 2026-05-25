@@ -1,7 +1,10 @@
 """
-Reads both FIELDS and FORM XML files and produces a detailed
-field map report showing all available elements, attributes,
-data types, and statistics.
+audit.py
+--------
+Horse Racing XML Feed Audit Script
+
+Reads both FIELDS and FORM XML files, prints a detailed report
+to the terminal, and simultaneously saves it to docs/audit_report_TIMESTAMP.txt
 
 Usage:
     python audit/audit.py --fields sample-data/FLE_FIELDS_XML_A.xml
@@ -15,7 +18,33 @@ from datetime import datetime
 from lxml import etree
 
 
+# ─────────────────────────────────────────────
+# Tee — write to terminal AND file at once
+# ─────────────────────────────────────────────
+
+class Tee:
+    """Writes output to both terminal and a file simultaneously."""
+    def __init__(self, filepath: str):
+        self.terminal = sys.stdout
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        self.file = open(filepath, "w", encoding="utf-8")
+
+    def write(self, message: str):
+        self.terminal.write(message)
+        self.file.write(message)
+
+    def flush(self):
+        self.terminal.flush()
+        self.file.flush()
+
+    def close(self):
+        self.file.close()
+
+
+# ─────────────────────────────────────────────
 # Helpers
+# ─────────────────────────────────────────────
+
 def parse_xml(filepath: str) -> etree._Element:
     """Parse an XML file and return the root element."""
     if not os.path.exists(filepath):
@@ -64,12 +93,7 @@ def collect_fields(element: etree._Element,
                    field_map: dict,
                    depth: int = 0,
                    max_depth: int = 10):
-    """
-    Recursively walk every element and collect:
-    - element path
-    - attributes and their inferred types
-    - text content and its inferred type
-    """
+    """Recursively walk every element and collect paths, types, and samples."""
     if depth > max_depth:
         return
 
@@ -102,9 +126,9 @@ def collect_fields(element: etree._Element,
 def gather_stats(root: etree._Element) -> dict:
     """Gather high-level statistics from the XML."""
     stats = {}
-    stats["meeting_date"] = root.findtext("date", "N/A").strip()
-    stats["stage"]        = root.findtext("stage", "N/A").strip()
-    stats["ra_meeting_id"]= root.findtext("ra_meeting_id", "N/A").strip()
+    stats["meeting_date"]  = root.findtext("date", "N/A").strip()
+    stats["stage"]         = root.findtext("stage", "N/A").strip()
+    stats["ra_meeting_id"] = root.findtext("ra_meeting_id", "N/A").strip()
 
     track = root.find("track")
     if track is not None:
@@ -114,16 +138,15 @@ def gather_stats(root: etree._Element) -> dict:
         stats["expected_condition"] = track.get("expected_condition", "N/A")
         stats["weather"]            = track.findtext("weather", "N/A").strip()
 
-    races = root.findall("./races/race")
-    stats["total_races"] = len(races)
-
+    races         = root.findall("./races/race")
     total_runners = 0
     race_details  = []
+
     for race in races:
-        horses = race.findall(".//horse")
-        total_runners += len(horses)
-        dist_el = race.find("distance")
+        horses   = race.findall(".//horse")
+        dist_el  = race.find("distance")
         distance = dist_el.get("metres", "") if dist_el is not None else ""
+        total_runners += len(horses)
         race_details.append({
             "number"  : race.get("number") or "",
             "name"    : race.get("name") or "",
@@ -131,13 +154,17 @@ def gather_stats(root: etree._Element) -> dict:
             "runners" : len(horses),
         })
 
+    stats["total_races"]        = len(races)
     stats["total_runners"]      = total_runners
     stats["race_details"]       = race_details
     stats["total_form_entries"] = len(root.findall(".//form"))
     return stats
 
 
+# ─────────────────────────────────────────────
 # Report printers
+# ─────────────────────────────────────────────
+
 def sep(char="─", width=90):
     print(char * width)
 
@@ -217,60 +244,79 @@ def print_table_mapping():
         print(f"  {table:<25} {source}")
 
 
+# ─────────────────────────────────────────────
 # Main
+# ─────────────────────────────────────────────
+
 def main():
     parser = argparse.ArgumentParser(description="Horse Racing XML Feed Audit Tool")
     parser.add_argument("--fields", required=True, help="Path to FIELDS XML file")
     parser.add_argument("--form",   required=True, help="Path to FORM XML file")
     args = parser.parse_args()
 
-    header("HORSE RACING XML FEED AUDIT REPORT")
-    print(f"  Generated : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"  Fields    : {args.fields}")
-    print(f"  Form      : {args.form}")
-    print()
-    print("  Loading files...")
+    # Auto-generate report filename with timestamp
+    timestamp   = datetime.now().strftime("%Y%m%d_%H%M%S")
+    report_path = os.path.join("docs", f"audit_report_{timestamp}.txt")
 
-    fields_root = parse_xml(args.fields)
-    form_root   = parse_xml(args.form)
-    print("  Done.")
+    # Tee stdout so everything goes to terminal AND file
+    tee = Tee(report_path)
+    sys.stdout = tee
 
-    # Stats
-    fields_stats = gather_stats(fields_root)
-    form_stats   = gather_stats(form_root)
-    print_stats("FIELDS FILE", fields_stats)
-    print_stats("FORM FILE",   form_stats)
+    try:
+        header("HORSE RACING XML FEED AUDIT REPORT")
+        print(f"  Generated : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"  Fields    : {args.fields}")
+        print(f"  Form      : {args.form}")
+        print(f"  Report    : {report_path}")
+        print()
+        print("  Loading files...")
 
-    # Field maps
-    fields_map = {}
-    form_map   = {}
-    print()
-    print("  Building field maps (may take a moment for large files)...")
-    collect_fields(fields_root, fields_root.tag, fields_map)
-    collect_fields(form_root,   form_root.tag,   form_map)
-    print(f"  Fields file : {len(fields_map)} unique fields")
-    print(f"  Form file   : {len(form_map)} unique fields")
+        fields_root = parse_xml(args.fields)
+        form_root   = parse_xml(args.form)
+        print("  Done.")
 
-    form_only = {k: v for k, v in form_map.items() if k not in fields_map}
+        # Stats
+        fields_stats = gather_stats(fields_root)
+        form_stats   = gather_stats(form_root)
+        print_stats("FIELDS FILE", fields_stats)
+        print_stats("FORM FILE",   form_stats)
 
-    print_field_map("FIELDS FILE", fields_map)
-    print_field_map("FORM FILE — Fields not present in FIELDS file", form_only)
+        # Field maps
+        fields_map = {}
+        form_map   = {}
+        print()
+        print("  Building field maps (may take a moment for large files)...")
+        collect_fields(fields_root, fields_root.tag, fields_map)
+        collect_fields(form_root,   form_root.tag,   form_map)
+        print(f"  Fields file : {len(fields_map)} unique fields")
+        print(f"  Form file   : {len(form_map)} unique fields")
 
-    print_ingestion_notes()
-    print_table_mapping()
+        form_only = {k: v for k, v in form_map.items() if k not in fields_map}
 
-    # Summary
-    section("SUMMARY")
-    print(f"  FIELDS file unique fields  : {len(fields_map)}")
-    print(f"  FORM file unique fields    : {len(form_map)}")
-    print(f"  Fields only in FORM file   : {len(form_only)}")
-    print(f"  Total races                : {fields_stats['total_races']}")
-    print(f"  Total runners              : {fields_stats['total_runners']}")
-    print(f"  Total past run records     : {form_stats['total_form_entries']}")
-    print()
-    sep("═")
-    print("  Audit complete.")
-    sep("═")
+        print_field_map("FIELDS FILE", fields_map)
+        print_field_map("FORM FILE — Fields not present in FIELDS file", form_only)
+
+        print_ingestion_notes()
+        print_table_mapping()
+
+        # Summary
+        section("SUMMARY")
+        print(f"  FIELDS file unique fields  : {len(fields_map)}")
+        print(f"  FORM file unique fields    : {len(form_map)}")
+        print(f"  Fields only in FORM file   : {len(form_only)}")
+        print(f"  Total races                : {fields_stats['total_races']}")
+        print(f"  Total runners              : {fields_stats['total_runners']}")
+        print(f"  Total past run records     : {form_stats['total_form_entries']}")
+        print()
+        sep("═")
+        print("  Audit complete.")
+        sep("═")
+
+    finally:
+        # Always restore stdout and close file even if an error occurs
+        sys.stdout = tee.terminal
+        tee.close()
+        print(f"\n  Report saved → {report_path}")
 
 
 if __name__ == "__main__":

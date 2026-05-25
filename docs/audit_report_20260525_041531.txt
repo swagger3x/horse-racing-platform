@@ -1,0 +1,357 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  HORSE RACING XML FEED AUDIT REPORT
+══════════════════════════════════════════════════════════════════════════════════════════
+  Generated : 2026-05-25 04:15:31
+  Fields    : sample-data/20260307_FLE_FIELDS_XML_A.xml
+  Form      : sample-data/20260307_FLE_FORM_XML_A.xml
+  Report    : docs\audit_report_20260525_041531.txt
+
+  Loading files...
+  Parsing: sample-data/20260307_FLE_FIELDS_XML_A.xml (802.0 KB)
+  Parsing: sample-data/20260307_FLE_FORM_XML_A.xml (5332.1 KB)
+  Done.
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  MEETING STATS — FIELDS FILE
+──────────────────────────────────────────────────────────────────────────────────────────
+  Track          : Flemington (AUS)
+  Date           : 07/03/2026
+  Stage          : A
+  RA Meeting ID  : 5191184
+  Surface        : G
+  Condition      : G4
+  Weather        : Fine
+  Total Races    : 10
+  Total Runners  : 117
+
+  Race   Name                                          Dist(m)    Runners
+  ────── ───────────────────────────────────────────── ────────── ───────
+  R1     TAB We're On Hcp                              1100       9
+  R2     Herald Sun Plate (Bm84)                       1100       11
+  R3     Good Friday Appeal Ottawa Stakes              1000       11
+  R4     Kirin Ichiban Shaftesbury Avenue              1400       10
+  R5     TAB & World Pool Kewney Stakes                1600       10
+  R6     Darley Sires' Produce Stakes                  1400       13
+  R7     Sharp Eit The All-Star Mile                   1600       12
+  R8     De Bortoli Wines Matron Stakes                1600       13
+  R9     Yulong Newmarket Hcp                          1200       16
+  R10    TAB Australian Cup Prelude                    2000       12
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  MEETING STATS — FORM FILE
+──────────────────────────────────────────────────────────────────────────────────────────
+  Track          : Flemington (AUS)
+  Date           : 07/03/2026
+  Stage          : A
+  RA Meeting ID  : 5191184
+  Surface        : G
+  Condition      : G4
+  Weather        : Fine
+  Total Races    : 10
+  Total Runners  : 117
+  Form Entries   : 1810
+
+  Race   Name                                          Dist(m)    Runners
+  ────── ───────────────────────────────────────────── ────────── ───────
+  R1     TAB We're On Hcp                              1100       9
+  R2     Herald Sun Plate (Bm84)                       1100       11
+  R3     Good Friday Appeal Ottawa Stakes              1000       11
+  R4     Kirin Ichiban Shaftesbury Avenue              1400       10
+  R5     TAB & World Pool Kewney Stakes                1600       10
+  R6     Darley Sires' Produce Stakes                  1400       13
+  R7     Sharp Eit The All-Star Mile                   1600       12
+  R8     De Bortoli Wines Matron Stakes                1600       13
+  R9     Yulong Newmarket Hcp                          1200       16
+  R10    TAB Australian Cup Prelude                    2000       12
+
+  Building field maps (may take a moment for large files)...
+  Fields file : 153 unique fields
+  Form file   : 234 unique fields
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  FIELD MAP — FIELDS FILE  (153 unique fields)
+──────────────────────────────────────────────────────────────────────────────────────────
+  Field Path                                                           Kind       Type(s)                   Samples
+  ──────────────────────────────────────────────────────────────────── ────────── ───────────────────────── ────────────────────
+  meeting/date[text]                                                   text       date (DD/MM/YYYY)         07/03/2026
+  meeting/dual_track[text]                                             text       boolean                   N
+  meeting/product[@date]                                               attribute  integer                   20260307
+  meeting/product[@directory]                                          attribute  text                      XML_A
+  meeting/product[@file]                                               attribute  text                      FLE20260307.XML
+  meeting/product[@track]                                              attribute  text                      FLE
+  meeting/ra_meeting_id[text]                                          text       integer                   5191184
+  meeting/races/race/classes/class[text]                               text       text                      Open | Benchmark 84
+  meeting/races/race/classes/class_id[text]                            text       integer                   4 | 246
+  meeting/races/race/distance[@metres]                                 attribute  integer                   1100 | 1100
+  meeting/races/race/group[text]                                       text       integer                   3 | 3
+  meeting/races/race/horses/horse/FF5_dry[text]                        text       integer                   56 | 49
+  meeting/races/race/horses/horse/FF5_wet[text]                        text       integer                   56 | 49
+  meeting/races/race/horses/horse/FF_Dry_Rating_100[text]              text       integer                   100 | 89
+  meeting/races/race/horses/horse/FF_Wet_Rating_100[text]              text       integer                   100 | 89
+  meeting/races/race/horses/horse/barrier[text]                        text       integer                   8 | 6
+  meeting/races/race/horses/horse/colours[text]                        text       text                      Green, White V | Maroon, Silver Bra...
+  meeting/races/race/horses/horse/comments[text]                       text       duration (M:SS.mm), text  First-up (18-weeks). In the G1 plac...
+  meeting/races/race/horses/horse/current_blinker_ind[text]            text       boolean                   N | N
+  meeting/races/race/horses/horse/dam[@country]                        attribute  text                      AUS | AUS
+  meeting/races/race/horses/horse/dam[@id]                             attribute  integer                   833381 | 779714
+  meeting/races/race/horses/horse/dam[@name]                           attribute  text                      Sanaya | Nataya Rose
+  meeting/races/race/horses/horse/form_comments[text]                  text       text                      Positioned midfield when 1-3/4 len ...
+  meeting/races/race/horses/horse/gear_changes/gear_change[@gear]      attribute  text                      Gelded | Blinkers
+  meeting/races/race/horses/horse/gear_changes/gear_change[@id]        attribute  integer                   30 | 356
+  meeting/races/race/horses/horse/gear_changes/gear_change[@option]    attribute  empty, text               again | off first time
+  meeting/races/race/horses/horse/horse_colours_image[text]            text       duration (M:SS.mm)        https://silks.medialityracing.com.a...
+  meeting/races/race/horses/horse/horse_colours_image_png[text]        text       duration (M:SS.mm)        https://silks.medialityracing.com.a...
+  meeting/races/race/horses/horse/horse_colours_image_svg[text]        text       duration (M:SS.mm)        https://silks.medialityracing.com.a...
+  meeting/races/race/horses/horse/jockey/statistics/statistic[@firsts] attribute  integer                   79 | 59
+  meeting/races/race/horses/horse/jockey/statistics/statistic[@seconds] attribute  integer                   72 | 59
+  meeting/races/race/horses/horse/jockey/statistics/statistic[@thirds] attribute  integer                   74 | 65
+  meeting/races/race/horses/horse/jockey/statistics/statistic[@total]  attribute  integer                   669 | 452
+  meeting/races/race/horses/horse/jockey/statistics/statistic[@type]   attribute  text                      one_year | one_year
+  meeting/races/race/horses/horse/jockey[@allowance_weight]            attribute  integer                   2 | 3
+  meeting/races/race/horses/horse/jockey[@apprentice_indicator]        attribute  boolean                   Y | Y
+  meeting/races/race/horses/horse/jockey[@firstname]                   attribute  text                      Logan | Jackson
+  meeting/races/race/horses/horse/jockey[@id]                          attribute  integer                   17399 | 17242
+  meeting/races/race/horses/horse/jockey[@jockey_RA_Id]                attribute  integer                   20661379 | 20895794
+  meeting/races/race/horses/horse/jockey[@name]                        attribute  text                      Logan Bates | Jackson Radley
+  meeting/races/race/horses/horse/jockey[@riding_weight]               attribute  numeric                   52.00 | 51.00
+  meeting/races/race/horses/horse/jockey[@surname]                     attribute  text                      Bates | Radley
+  meeting/races/race/horses/horse/last_fifteen_starts[text]            text       integer, text             11x143x | 231111x15438x
+  meeting/races/race/horses/horse/last_four_starts[text]               text       integer, text             143x | 438x
+  meeting/races/race/horses/horse/last_ten_starts[text]                text       integer, text             11x143x | 111x15438x
+  meeting/races/race/horses/horse/last_twenty_starts[text]             text       integer, text             11x143x | 231111x15438x
+  meeting/races/race/horses/horse/market[@price]                       attribute  fractional price          5/4 | 9/1
+  meeting/races/race/horses/horse/market[@price_decimal]               attribute  numeric                   2.30 | 10.00
+  meeting/races/race/horses/horse/owners[text]                         text       duration (M:SS.mm), text  Vinery Stud (Mgr: P C Orton) | L Lee
+  meeting/races/race/horses/horse/pace[text]                           text       text                      Lead | Lead/Handy
+  meeting/races/race/horses/horse/pace_value[text]                     text       integer                   1 | 2
+  meeting/races/race/horses/horse/place_percentage[text]               text       integer                   80 | 73
+  meeting/races/race/horses/horse/prizemoney_won[text]                 text       integer                   403610 | 517625
+  meeting/races/race/horses/horse/rating[text]                         text       integer                   56 | 49
+  meeting/races/race/horses/horse/ratings/rating[@date]                attribute  date (DD/MM/YYYY), empty  01/11/2025 | 04/10/2025
+  meeting/races/race/horses/horse/ratings/rating[@type]                attribute  text                      career | preparation
+  meeting/races/race/horses/horse/ratings/rating[@value]               attribute  integer, numeric          61.5 | 0
+  meeting/races/race/horses/horse/running_gear/gear_item[text]         text       text                      Ear Muffs (Pre-Race Only) | Winkers
+  meeting/races/race/horses/horse/scratched[text]                      text       boolean                   true | true
+  meeting/races/race/horses/horse/selection[text]                      text       integer                   1 | 4
+  meeting/races/race/horses/horse/sire[@country]                       attribute  text                      AUS | AUS
+  meeting/races/race/horses/horse/sire[@id]                            attribute  integer                   928896 | 712428
+  meeting/races/race/horses/horse/sire[@name]                          attribute  text                      Ole Kirk | Spirit Of Boom
+  meeting/races/race/horses/horse/sire_of_dam[@country]                attribute  text                      USA | AUS
+  meeting/races/race/horses/horse/sire_of_dam[@id]                     attribute  integer                   589433 | 273779
+  meeting/races/race/horses/horse/sire_of_dam[@name]                   attribute  text                      More Than Ready | Canny Lad
+  meeting/races/race/horses/horse/statistics/statistic[@firsts]        attribute  integer                   3 | 0
+  meeting/races/race/horses/horse/statistics/statistic[@seconds]       attribute  integer                   0 | 0
+  meeting/races/race/horses/horse/statistics/statistic[@thirds]        attribute  integer                   1 | 0
+  meeting/races/race/horses/horse/statistics/statistic[@total]         attribute  integer                   5 | 0
+  meeting/races/race/horses/horse/statistics/statistic[@type]          attribute  text                      all | preparation
+  meeting/races/race/horses/horse/tab_no[text]                         text       integer                   1 | 2
+  meeting/races/race/horses/horse/trainer/statistics/statistic[@firsts] attribute  integer                   52 | 230
+  meeting/races/race/horses/horse/trainer/statistics/statistic[@seconds] attribute  integer                   52 | 213
+  meeting/races/race/horses/horse/trainer/statistics/statistic[@thirds] attribute  integer                   45 | 180
+  meeting/races/race/horses/horse/trainer/statistics/statistic[@total] attribute  integer                   397 | 1631
+  meeting/races/race/horses/horse/trainer/statistics/statistic[@type]  attribute  text                      one_year | one_year
+  meeting/races/race/horses/horse/trainer[@firstname]                  attribute  text                      Robbie | Ben, Will & Jd
+  meeting/races/race/horses/horse/trainer[@firststart]                 attribute  boolean                   Y | Y
+  meeting/races/race/horses/horse/trainer[@id]                         attribute  integer                   14346 | 28683
+  meeting/races/race/horses/horse/trainer[@name]                       attribute  text                      R D Griffiths | Ben, Will & Jd Hayes
+  meeting/races/race/horses/horse/trainer[@previous_trainer]           attribute  text                      Peter Hardacre | Ms J Erkelens
+  meeting/races/race/horses/horse/trainer[@previous_trainer_id]        attribute  integer                   25836 | 24382
+  meeting/races/race/horses/horse/trainer[@surname]                    attribute  text                      Griffiths | Hayes
+  meeting/races/race/horses/horse/trainer[@trainer_RA_Id]              attribute  integer                   10831 | 709335
+  meeting/races/race/horses/horse/training_location[text]              text       text                      Cranbourne | Flemington
+  meeting/races/race/horses/horse/weight[@allocated]                   attribute  integer, numeric          61 | 58.5
+  meeting/races/race/horses/horse/weight[@total]                       attribute  integer, numeric          61 | 58.5
+  meeting/races/race/horses/horse/win_distances/win_distance[@distance] attribute  integer                   1100 | 1200
+  meeting/races/race/horses/horse/win_distances/win_distance[@wins]    attribute  integer                   1 | 2
+  meeting/races/race/horses/horse/win_percentage[text]                 text       integer                   60 | 45
+  meeting/races/race/horses/horse[@age]                                attribute  integer                   3 | 3
+  meeting/races/race/horses/horse[@colour]                             attribute  text                      b | b
+  meeting/races/race/horses/horse[@country]                            attribute  text                      AUS | AUS
+  meeting/races/race/horses/horse[@foaling_date]                       attribute  date (DD/MM/YYYY)         03/09/2022 | 20/08/2022
+  meeting/races/race/horses/horse[@horse_RA_Id]                        attribute  integer                   5348403 | 5347225
+  meeting/races/race/horses/horse[@id]                                 attribute  integer                   1122261 | 1115868
+  meeting/races/race/horses/horse[@name]                               attribute  text                      Legacy Bound | Shining Smile
+  meeting/races/race/horses/horse[@previous_name]                      attribute  text                      BILL'S KICK
+  meeting/races/race/horses/horse[@sex]                                attribute  text                      G | G
+  meeting/races/race/min_hcp_weight[text]                              text       integer                   53 | 54
+  meeting/races/race/prizes/prize[@type]                               attribute  text                      1st | 2nd
+  meeting/races/race/prizes/prize[@value]                              attribute  integer                   82500 | 27000
+  meeting/races/race/race_type[text]                                   text       text                      Flat | Flat
+  meeting/races/race/records/track_record/distance[@metres]            attribute  integer                   1100 | 1100
+  meeting/races/race/records/track_record/duration[text]               text       duration (M:SS.mm)        1:02.15 | 1:02.15
+  meeting/races/race/records/track_record/horse/jockey[@firstname]     attribute  text                      Dale | Dale
+  meeting/races/race/records/track_record/horse/jockey[@id]            attribute  integer                   4659 | 4659
+  meeting/races/race/records/track_record/horse/jockey[@name]          attribute  text                      Dale Smith | Dale Smith
+  meeting/races/race/records/track_record/horse/jockey[@surname]       attribute  text                      Smith | Smith
+  meeting/races/race/records/track_record/horse/weight_carried[text]   text       integer, numeric          54 | 54
+  meeting/races/race/records/track_record/horse[@country]              attribute  text                      AUS | AUS
+  meeting/races/race/records/track_record/horse[@id]                   attribute  integer                   726373 | 726373
+  meeting/races/race/records/track_record/horse[@name]                 attribute  text                      Loveyamadly | Loveyamadly
+  meeting/races/race/records/track_record/meeting_date[text]           text       date (DD/MM/YYYY)         02/03/2013 | 02/03/2013
+  meeting/races/race/records/track_record/race[@id]                    attribute  integer                   1380280 | 1380280
+  meeting/races/race/records/track_record/race[@number]                attribute  integer                   3 | 3
+  meeting/races/race/restrictions[@age]                                attribute  text                      3yo | 2yo
+  meeting/races/race/restrictions[@jockey]                             attribute  text                      Apprentices Can Claim | Apprentices...
+  meeting/races/race/restrictions[@sex]                                attribute  text                      Fillies | Fillies
+  meeting/races/race/size_emergencies[text]                            text       integer                   4 | 4
+  meeting/races/race/size_field[text]                                  text       integer                   16 | 16
+  meeting/races/race/start_time[text]                                  text       text                      12:15pm | 12:45pm
+  meeting/races/race/track[@country]                                   attribute  text                      AUS | AUS
+  meeting/races/race/track[@id]                                        attribute  integer                   269 | 269
+  meeting/races/race/track[@name]                                      attribute  text                      Flemington | Flemington
+  meeting/races/race/track[@track_3char_abbrev]                        attribute  text                      FLE | FLE
+  meeting/races/race/track[@track_surface]                             attribute  text                      G | G
+  meeting/races/race/weight_type[text]                                 text       text                      Quality | Handicap
+  meeting/races/race[@id]                                              attribute  integer                   26066030269 | 26066050269
+  meeting/races/race[@name]                                            attribute  text                      TAB We're On Hcp | Herald Sun Plate...
+  meeting/races/race[@nominations_number]                              attribute  integer                   3 | 5
+  meeting/races/race[@number]                                          attribute  integer                   1 | 2
+  meeting/rail_position[text]                                          text       text                      Out 6m Entire Circuit
+  meeting/stage[text]                                                  text       text                      A
+  meeting/tab_indicator[text]                                          text       text                      T
+  meeting/track/irrigation[text]                                       text       text                      nil last 24 hours, 6mm last 7 days
+  meeting/track/penetrometer[text]                                     text       integer                   0
+  meeting/track/rainfall[text]                                         text       text                      0.4mm last 24 hours, 14.8mm last 7 ...
+  meeting/track/track_info[text]                                       text       text                      Inspection 9AM 5/3;   Going Stick 8...
+  meeting/track/weather[text]                                          text       text                      Fine
+  meeting/track[@club]                                                 attribute  text                      Victoria R.C.
+  meeting/track[@country]                                              attribute  text                      AUS
+  meeting/track[@expected_condition]                                   attribute  text                      G4
+  meeting/track[@id]                                                   attribute  integer                   269
+  meeting/track[@location]                                             attribute  text                      M
+  meeting/track[@name]                                                 attribute  text                      Flemington
+  meeting/track[@state]                                                attribute  text                      VIC
+  meeting/track[@track_3char_abbrev]                                   attribute  text                      FLE
+  meeting/track[@track_4char_abbrev]                                   attribute  text                      FLEM
+  meeting/track[@track_6char_abbrev]                                   attribute  text                      FLEM
+  meeting/track[@track_surface]                                        attribute  text                      G
+  meeting[@{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation] attribute  duration (M:SS.mm)        https://assets.medialityracing.com....
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  FIELD MAP — FORM FILE — Fields not present in FIELDS file  (81 unique fields)
+──────────────────────────────────────────────────────────────────────────────────────────
+  Field Path                                                           Kind       Type(s)                   Samples
+  ──────────────────────────────────────────────────────────────────── ────────── ───────────────────────── ────────────────────
+  meeting/races/race/horses/horse/forms/form/barrier[text]             text       integer                   4 | 3
+  meeting/races/race/horses/horse/forms/form/barrier_trial_indicator[text] text       text                      B | B
+  meeting/races/race/horses/horse/forms/form/beaten_margin[text]       text       integer, numeric          3 | 1.86
+  meeting/races/race/horses/horse/forms/form/blinker_indicator[text]   text       text                      B | B
+  meeting/races/race/horses/horse/forms/form/classes/class[text]       text       text                      Open | Open
+  meeting/races/race/horses/horse/forms/form/classes/class_id[text]    text       integer                   4 | 4
+  meeting/races/race/horses/horse/forms/form/classes/second_class[text] text       text                      Open | Open
+  meeting/races/race/horses/horse/forms/form/classes/second_class_id[text] text       integer                   4 | 4
+  meeting/races/race/horses/horse/forms/form/days_since_last_run[text] text       integer                   28 | 21
+  meeting/races/race/horses/horse/forms/form/decimalprices[@mid]       attribute  numeric                   1.75 | 11.00
+  meeting/races/race/horses/horse/forms/form/decimalprices[@opening]   attribute  numeric                   21.00 | 8.50
+  meeting/races/race/horses/horse/forms/form/decimalprices[@starting]  attribute  numeric                   31.00 | 7.00
+  meeting/races/race/horses/horse/forms/form/distance[@metres]         attribute  integer                   1200 | 1100
+  meeting/races/race/horses/horse/forms/form/event_duration[text]      text       duration (M:SS.mm)        1:08.10 | 1:02.63
+  meeting/races/race/horses/horse/forms/form/event_id[text]            text       integer                   25305010269 | 25277020269
+  meeting/races/race/horses/horse/forms/form/event_prizemoney[text]    text       integer                   2005645 | 304945
+  meeting/races/race/horses/horse/forms/form/favourite_indicator[text] text       text                      F | F
+  meeting/races/race/horses/horse/forms/form/finish_position[text]     text       integer, text             3 | 4
+  meeting/races/race/horses/horse/forms/form/gear_changes/gear_change[@gear] attribute  text                      Ear Muffs (Pre-Race Only) | Winkers
+  meeting/races/race/horses/horse/forms/form/gear_changes/gear_change[@id] attribute  integer                   413 | 62
+  meeting/races/race/horses/horse/forms/form/gear_changes/gear_change[@option] attribute  empty, text               first time | first time
+  meeting/races/race/horses/horse/forms/form/group[text]               text       integer, text             1 | 2
+  meeting/races/race/horses/horse/forms/form/horse_prizemoney[text]    text       integer                   180000 | 13500
+  meeting/races/race/horses/horse/forms/form/horse_prizemoney_bonus[text] text       integer                   11250 | 6000
+  meeting/races/race/horses/horse/forms/form/jockey[@apprentice_indicator] attribute  boolean                   Y | Y
+  meeting/races/race/horses/horse/forms/form/jockey[@firstname]        attribute  text                      Jye | Jye
+  meeting/races/race/horses/horse/forms/form/jockey[@id]               attribute  integer                   14936 | 14936
+  meeting/races/race/horses/horse/forms/form/jockey[@name]             attribute  text                      Jye McNeil | Jye McNeil
+  meeting/races/race/horses/horse/forms/form/jockey[@surname]          attribute  text                      McNeil | McNeil
+  meeting/races/race/horses/horse/forms/form/limit_weight[text]        text       integer, numeric          54 | 54
+  meeting/races/race/horses/horse/forms/form/margin[text]              text       integer, numeric          3.1 | 1.9
+  meeting/races/race/horses/horse/forms/form/meeting_date[text]        text       date (DD/MM/YYYY)         01/11/2025 | 04/10/2025
+  meeting/races/race/horses/horse/forms/form/night_meeting[text]       text       boolean                   N | N
+  meeting/races/race/horses/horse/forms/form/official_margin_1[text]   text       fractional price, integer, numeric, text 2.3 | Sh1/2Hd
+  meeting/races/race/horses/horse/forms/form/official_margin_2[text]   text       fractional price, integer, numeric, text 3/4 | 1.5
+  meeting/races/race/horses/horse/forms/form/other_runners/other_runner[@barrier] attribute  empty, integer            5 | 1
+  meeting/races/race/horses/horse/forms/form/other_runners/other_runner[@country] attribute  empty, text               AUS | AUS
+  meeting/races/race/horses/horse/forms/form/other_runners/other_runner[@dead_heat_indicator] attribute  text                      D | D
+  meeting/races/race/horses/horse/forms/form/other_runners/other_runner[@horse] attribute  text                      Tentyris | My Gladiola
+  meeting/races/race/horses/horse/forms/form/other_runners/other_runner[@jockey] attribute  text                      M Zahra | J Mott
+  meeting/races/race/horses/horse/forms/form/other_runners/other_runner[@margin] attribute  integer, numeric          2.3 | 2.3
+  meeting/races/race/horses/horse/forms/form/other_runners/other_runner[@position] attribute  integer                   1 | 2
+  meeting/races/race/horses/horse/forms/form/other_runners/other_runner[@weight] attribute  integer, numeric          57 | 55
+  meeting/races/race/horses/horse/forms/form/positions[@finish]        attribute  integer, text             3 | 4
+  meeting/races/race/horses/horse/forms/form/positions[@m1200]         attribute  integer                   0 | 7
+  meeting/races/race/horses/horse/forms/form/positions[@m400]          attribute  integer                   5 | 5
+  meeting/races/race/horses/horse/forms/form/positions[@m800]          attribute  integer                   4 | 5
+  meeting/races/race/horses/horse/forms/form/positions[@settling_down] attribute  integer                   4 | 5
+  meeting/races/race/horses/horse/forms/form/prices[@mid]              attribute  fractional price          8/11 | 10/1
+  meeting/races/race/horses/horse/forms/form/prices[@opening]          attribute  fractional price          20/1 | 15/2
+  meeting/races/race/horses/horse/forms/form/prices[@starting]         attribute  fractional price          30/1 | 6/1
+  meeting/races/race/horses/horse/forms/form/race[@name]               attribute  text                      Coolmore Stud Stakes | Danehill Stakes
+  meeting/races/race/horses/horse/forms/form/race[@number]             attribute  integer                   6 | 6
+  meeting/races/race/horses/horse/forms/form/rail_position[text]       text       boolean, integer, numeric, text True Entire Circuit | Out 9m Entire...
+  meeting/races/race/horses/horse/forms/form/rating[@adjusted]         attribute  integer, numeric          61.5 | 57.5
+  meeting/races/race/horses/horse/forms/form/rating[@handicap]         attribute  integer, numeric          90 | 90
+  meeting/races/race/horses/horse/forms/form/rating[@post_handicap]    attribute  integer                   0 | 0
+  meeting/races/race/horses/horse/forms/form/rating[@unadjusted]       attribute  integer, numeric          61.5 | 57.5
+  meeting/races/race/horses/horse/forms/form/restrictions[@age]        attribute  text                      3yo | 3yo
+  meeting/races/race/horses/horse/forms/form/restrictions[@jockey]     attribute  text                      Apprentices Cannot Claim | Apprenti...
+  meeting/races/race/horses/horse/forms/form/restrictions[@sex]        attribute  text                      Colts & Geldings | Colts & Geldings
+  meeting/races/race/horses/horse/forms/form/running_gear/gear_item[text] text       text                      Ear Muffs (Pre-Race Only) | Winkers
+  meeting/races/race/horses/horse/forms/form/sectional[@distance]      attribute  integer                   600 | 600
+  meeting/races/race/horses/horse/forms/form/sectional[@location]      attribute  text                      Last | Last
+  meeting/races/race/horses/horse/forms/form/sectional[@time]          attribute  duration (M:SS.mm), numeric 0:33.22 | 0:32.36
+  meeting/races/race/horses/horse/forms/form/starters[text]            text       integer                   12 | 9
+  meeting/races/race/horses/horse/forms/form/stewards_reports/stewards_report[text] text       text                      Slowly away. | Inconvenienced at st...
+  meeting/races/race/horses/horse/forms/form/track[@condition]         attribute  text                      Good | Good
+  meeting/races/race/horses/horse/forms/form/track[@country]           attribute  text                      AUS | AUS
+  meeting/races/race/horses/horse/forms/form/track[@grading]           attribute  empty, integer            3 | 4
+  meeting/races/race/horses/horse/forms/form/track[@id]                attribute  integer                   269 | 269
+  meeting/races/race/horses/horse/forms/form/track[@location]          attribute  empty, text               M | M
+  meeting/races/race/horses/horse/forms/form/track[@name]              attribute  text                      Flemington | Flemington
+  meeting/races/race/horses/horse/forms/form/track[@state_no]          attribute  integer                   10 | 10
+  meeting/races/race/horses/horse/forms/form/track[@track_3char_abbrev] attribute  text                      FLE | FLE
+  meeting/races/race/horses/horse/forms/form/track[@track_4char_abbrev] attribute  text                      FLEM | FLEM
+  meeting/races/race/horses/horse/forms/form/track[@track_6char_abbrev] attribute  text                      FLEM | FLEM
+  meeting/races/race/horses/horse/forms/form/track[@track_surface]     attribute  boolean, text             G | G
+  meeting/races/race/horses/horse/forms/form/weight_adj[text]          text       integer, numeric          -2 | -3
+  meeting/races/race/horses/horse/forms/form/weight_carried[text]      text       integer, numeric          57 | 58.5
+  meeting/races/race/horses/horse/forms/form/weight_type[text]         text       text                      Set Weight | Set Weight With Penalties
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  INGESTION NOTES
+──────────────────────────────────────────────────────────────────────────────────────────
+  • Dates                  DD/MM/YYYY throughout — convert to ISO 8601 before storing
+  • Durations              '1:08.10' — parse to PostgreSQL interval type
+  • Fractional prices      '5/4' — store both fractional string and decimal float
+  • Statistics             28 typed <statistic> elements — normalise into runners_statistics
+  • Ratings                25 typed <rating> elements — normalise into runners_ratings
+  • Upsert keys            meeting: track+date | race: xml_race_id | horse: xml_horse_id | run: event_id
+  • Silks URLs             Fully formed HTTPS URLs — store directly in runners table
+  • running_gear           Multiple <gear_item> children — store as PostgreSQL text[]
+  • FORM only              <forms> block only in FORM file — skip gracefully if absent
+  • Unknown fields         Use extra_data JSONB column to catch any unrecognised fields
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  RECOMMENDED DATABASE TABLE MAPPING
+──────────────────────────────────────────────────────────────────────────────────────────
+  Table                     XML Source
+  ───────────────────────── ───────────────────────────────────────────────────────
+  meetings                  meeting.* + track.*
+  races                     race[number, name, id, distance, type, class, prizes...]
+  horses                    horse[id, name, country, sex, age, sire, dam, sire_of_dam...]
+  people                    trainer[id, name] + jockey[id, name, apprentice, allowance...]
+  runners                   horse entry per race [barrier, weight, tab_no, market, gear, silks...]
+  past_runs                 form[event_id, date, track, positions, margin, prices, ratings...]
+  runners_statistics        statistic[type, total, firsts, seconds, thirds] — 28 types
+  runners_ratings           rating[type, value, date] — 25 types
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  SUMMARY
+──────────────────────────────────────────────────────────────────────────────────────────
+  FIELDS file unique fields  : 153
+  FORM file unique fields    : 234
+  Fields only in FORM file   : 81
+  Total races                : 10
+  Total runners              : 117
+  Total past run records     : 1810
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Audit complete.
+══════════════════════════════════════════════════════════════════════════════════════════
